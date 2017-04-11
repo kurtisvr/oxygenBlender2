@@ -7,6 +7,18 @@
 //#include "alarmWindow.h"
 #include <QMessageBox>
 
+//Reading csv:
+#include <QFile>
+#include <QFileDialog>
+#include <QTextStream>
+#include <QStandardItemModel>
+#include <iostream>
+#include <fstream>
+#include <limits>
+#include <string>
+
+
+
 namespace Ui {
 class MainWindow;
 }
@@ -43,6 +55,7 @@ private slots:
     void timeEnter();
     //void showPopUp();
 
+
     //Every label/button/etc declared here
 private:
     QLabel *spO2Label;
@@ -78,6 +91,8 @@ private:
     QPushButton *timeEnter_Button;
 
     QMessageBox alarmBox;
+
+
 
 };
 

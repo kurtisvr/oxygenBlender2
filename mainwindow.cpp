@@ -6,6 +6,11 @@
 #include <QElapsedTimer>
 #include <QMessageBox>
 
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
 //Global Variables:
 QString spO2SetPoint = "", fiO2SetPoint = "", timerSetPoint = "";
 //QString spO2Level = "", fiO2Level = "", time = "";
@@ -390,6 +395,14 @@ void MainWindow::timeEnter(){//Enter button for time interval screen
     beginWeaning_Button -> show();
 }
 
+
+
+std::string getLastLine(std::ifstream& in){
+    std::string line;
+    while(in >> std::ws && std::getline(in, line));
+    return line;
+}
+
 //Begin main process here:
 void MainWindow::beginWeaning(){
 
@@ -417,10 +430,21 @@ void MainWindow::beginWeaning(){
      *
      */
 
+    std::ifstream file("example.txt");
+    std::string line;
+    if(file){
+        line = getLastLine(file);
+
+    }
+    else
+        std::cout << "Unable to open file.\n";
+
+   // std::string line = ".98";
+    //std::string::size_type sz;
     //*******************************************************************************************************
     //These inputs will be from the pulse ox
     double input1 = .98;//Patient fiO2 level
-    double input2 = .93;//Patinet spO2 level
+    double input2 = .98;//Patinet spO2 level
     //*******************************************************************************************************
 
     int counter = 0;
